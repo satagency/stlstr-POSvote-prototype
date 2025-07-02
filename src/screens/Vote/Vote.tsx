@@ -250,210 +250,212 @@ export const Vote = (): JSX.Element => {
 
   return (
     <div 
-      className="flex flex-col h-[932px] items-center justify-center gap-7 px-[60px] py-[89px] relative"
+      className="flex flex-col h-[932px] items-center justify-center gap-7 px-4 sm:px-[60px] py-[89px] relative"
       style={{
         background: 'linear-gradient(0deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%), #1a1a1a'
       }}
     >
       <Dialog open={true}>
-        <DialogContent className="p-0 border-none bg-transparent flex items-center justify-center max-h-[610px]" hideCloseButton>
-          <Card 
-            className="flex flex-col w-[380px] max-h-[610px] items-center gap-2 pt-0 pb-3 px-0 relative flex-[0_0_auto] rounded-xl border border-solid border-[#00000047] shadow-[0px_1px_12.9px_6px_#0000001a] transition-colors duration-700 ease-in-out overflow-hidden"
-            style={{ backgroundColor: modalCardColor }}
-          >
-            <DialogHeader className="flex flex-col w-full h-[50px] items-start justify-center gap-2 pl-[21px] pr-[18.47px] py-2 relative border-b-[1.15px] [border-bottom-style:solid] border-[#c4c4c4] flex-shrink-0">
-              <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
-                <DialogTitle asChild>
-                  <h3 className="relative w-fit [font-family:'Roobert_PRO-Bold',Helvetica] font-bold text-black text-sm tracking-[0] leading-[20px] whitespace-nowrap">
-                    Change the Setlist
-                  </h3>
-                </DialogTitle>
+        <DialogContent className="p-0 border-none bg-transparent flex items-center justify-center w-full h-full max-w-none max-h-none" hideCloseButton>
+          <div className="flex items-center justify-center w-full h-full p-4 sm:p-0">
+            <Card 
+              className="flex flex-col w-full max-w-[380px] max-h-[610px] items-center gap-2 pt-0 pb-3 px-0 relative rounded-xl border border-solid border-[#00000047] shadow-[0px_1px_12.9px_6px_#0000001a] transition-colors duration-700 ease-in-out overflow-hidden"
+              style={{ backgroundColor: modalCardColor }}
+            >
+              <DialogHeader className="flex flex-col w-full h-[50px] items-start justify-center gap-2 pl-[21px] pr-[18.47px] py-2 relative border-b-[1.15px] [border-bottom-style:solid] border-[#c4c4c4] flex-shrink-0">
+                <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
+                  <DialogTitle asChild>
+                    <h3 className="relative w-fit [font-family:'Roobert_PRO-Bold',Helvetica] font-bold text-black text-sm tracking-[0] leading-[20px] whitespace-nowrap">
+                      Change the Setlist
+                    </h3>
+                  </DialogTitle>
 
-                {/* Hide X icon on mobile (screens smaller than 640px) */}
-                <div className="hidden sm:inline-flex items-center gap-2 p-[3.46px] relative flex-[0_0_auto] bg-[#0000001a] rounded-[103.91px]">
-                  <XIcon className="relative w-[18.47px] h-[18.47px]" />
+                  {/* Hide X icon on mobile (screens smaller than 640px) */}
+                  <div className="hidden sm:inline-flex items-center gap-2 p-[3.46px] relative flex-[0_0_auto] bg-[#0000001a] rounded-[103.91px]">
+                    <XIcon className="relative w-[18.47px] h-[18.47px]" />
+                  </div>
                 </div>
+              </DialogHeader>
+
+              {/* Instruction text with compact spacing */}
+              <div className="flex flex-col items-center px-6 py-3 relative self-stretch w-full flex-shrink-0">
+                <p className="relative w-full max-w-[308px] [font-family:'Roobert_PRO-Regular',Helvetica] font-normal text-[#000500] text-[16px] text-center tracking-[0] leading-[normal]">
+                  Cycle through the songs and select what you want to hear at your concert.
+                </p>
               </div>
-            </DialogHeader>
 
-            {/* Instruction text with compact spacing */}
-            <div className="flex flex-col items-center px-6 py-3 relative self-stretch w-full flex-shrink-0">
-              <p className="relative w-[308px] [font-family:'Roobert_PRO-Regular',Helvetica] font-normal text-[#000500] text-[16px] text-center tracking-[0] leading-[normal]">
-                Cycle through the songs and select what you want to hear at your concert.
-              </p>
-            </div>
-
-            {/* Carousel Container with increased height for larger album art */}
-            <div className="relative w-[380px] h-[360px] overflow-hidden flex-shrink-0">
-              <div
-                ref={containerRef}
-                className={`flex items-center ${isDragging ? '' : 'transition-transform duration-300 ease-out'} ${!hasUserInteracted && !isDragging ? 'transition-transform duration-700 ease-out' : ''}`}
-                style={{
-                  transform: `translateX(${translateX + dragOffset + nudgeOffset}px)`,
-                  cursor: isDragging ? 'grabbing' : 'grab'
-                }}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleDragEnd}
-                onMouseLeave={handleDragEnd}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleDragEnd}
-              >
-                {songData.map((song, index) => (
-                  <div
-                    key={song.id}
-                    className="flex flex-col w-[380px] h-[360px] items-center justify-center gap-4 pt-4 pb-2 px-0 relative flex-shrink-0"
-                    style={{ userSelect: 'none' }}
-                  >
+              {/* Carousel Container with increased height for larger album art */}
+              <div className="relative w-full max-w-[380px] h-[360px] overflow-hidden flex-shrink-0">
+                <div
+                  ref={containerRef}
+                  className={`flex items-center ${isDragging ? '' : 'transition-transform duration-300 ease-out'} ${!hasUserInteracted && !isDragging ? 'transition-transform duration-700 ease-out' : ''}`}
+                  style={{
+                    transform: `translateX(${translateX + dragOffset + nudgeOffset}px)`,
+                    cursor: isDragging ? 'grabbing' : 'grab'
+                  }}
+                  onMouseDown={handleMouseDown}
+                  onMouseMove={handleMouseMove}
+                  onMouseUp={handleDragEnd}
+                  onMouseLeave={handleDragEnd}
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleDragEnd}
+                >
+                  {songData.map((song, index) => (
                     <div
-                      className="relative w-[287px] h-[287px] rounded-[4.76px] overflow-hidden border-[1.19px] border-solid border-black shadow-[0px_4.76px_4.76px_#00000040,inset_0px_4.76px_3.56px_#ffffff80]"
+                      key={song.id}
+                      className="flex flex-col w-[380px] h-[360px] items-center justify-center gap-4 pt-4 pb-2 px-0 relative flex-shrink-0"
+                      style={{ userSelect: 'none' }}
                     >
-                      {/* Background image with fallback */}
-                      {!imageErrors[song.id] ? (
-                        <img
-                          src={song.image}
-                          alt={song.title}
-                          className="absolute inset-0 w-full h-full object-cover"
-                          onError={() => handleImageError(song.id)}
+                      <div
+                        className="relative w-[287px] h-[287px] rounded-[4.76px] overflow-hidden border-[1.19px] border-solid border-black shadow-[0px_4.76px_4.76px_#00000040,inset_0px_4.76px_3.56px_#ffffff80]"
+                      >
+                        {/* Background image with fallback */}
+                        {!imageErrors[song.id] ? (
+                          <img
+                            src={song.image}
+                            alt={song.title}
+                            className="absolute inset-0 w-full h-full object-cover"
+                            onError={() => handleImageError(song.id)}
+                            style={{
+                              filter: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%)'
+                            }}
+                          />
+                        ) : (
+                          <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-purple-400 to-purple-600 flex items-center justify-center">
+                            <div className="text-white text-center p-4">
+                              <div className="text-2xl mb-2">🎵</div>
+                              <div className="text-sm font-medium">{song.title}</div>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {/* Dark overlay gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
+
+                        {/* White inner shadow at top only - consistent across all albums */}
+                        <div 
+                          className="absolute top-0 left-0 right-0 h-[6px] pointer-events-none"
                           style={{
-                            filter: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%)'
+                            background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 60%, transparent 100%)'
                           }}
                         />
-                      ) : (
-                        <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-purple-400 to-purple-600 flex items-center justify-center">
-                          <div className="text-white text-center p-4">
-                            <div className="text-2xl mb-2">🎵</div>
-                            <div className="text-sm font-medium">{song.title}</div>
+
+                        {/* Price tag - Updated with #323232 background at 90% opacity */}
+                        <div 
+                          className="flex flex-col w-[50px] h-[40px] items-center justify-center gap-2 px-0.5 py-0 absolute left-0 top-0 rounded-[5px_0px_17.5px_0px] bg-blend-multiply"
+                          style={{
+                            backgroundColor: 'rgba(50, 50, 50, 0.9)' // #323232 with 90% opacity
+                          }}
+                        >
+                          <div className="relative w-fit text-white text-center leading-[normal] flex items-baseline">
+                            <span 
+                              className="tracking-[0.5px]"
+                              style={{ 
+                                fontFamily: 'Arial, sans-serif',
+                                fontWeight: '500', // Medium weight
+                                fontSize: '16px', // Reduced from 19px
+                                textShadow: '2px 2px 0px rgba(0, 0, 0, 0.9)' // Black drop shadow 90% opacity
+                              }}
+                            >
+                              $
+                            </span>
+                            <span 
+                              className="tracking-[0]"
+                              style={{ 
+                                fontFamily: 'Arial Black, Arial, sans-serif', // Arial Black for the number
+                                fontWeight: '900',
+                                fontSize: '19px',
+                                textShadow: '2px 2px 0px rgba(0, 0, 0, 0.9)' // Black drop shadow 90% opacity
+                              }}
+                            >
+                              {song.price}
+                            </span>
                           </div>
                         </div>
-                      )}
-                      
-                      {/* Dark overlay gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
 
-                      {/* White inner shadow at top only - consistent across all albums */}
-                      <div 
-                        className="absolute top-0 left-0 right-0 h-[6px] pointer-events-none"
-                        style={{
-                          background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 60%, transparent 100%)'
-                        }}
-                      />
-
-                      {/* Price tag - Updated with #323232 background at 90% opacity */}
-                      <div 
-                        className="flex flex-col w-[50px] h-[40px] items-center justify-center gap-2 px-0.5 py-0 absolute left-0 top-0 rounded-[5px_0px_17.5px_0px] bg-blend-multiply"
-                        style={{
-                          backgroundColor: 'rgba(50, 50, 50, 0.9)' // #323232 with 90% opacity
-                        }}
-                      >
-                        <div className="relative w-fit text-white text-center leading-[normal] flex items-baseline">
-                          <span 
-                            className="tracking-[0.5px]"
-                            style={{ 
-                              fontFamily: 'Arial, sans-serif',
-                              fontWeight: '500', // Medium weight
-                              fontSize: '16px', // Reduced from 19px
-                              textShadow: '2px 2px 0px rgba(0, 0, 0, 0.9)' // Black drop shadow 90% opacity
+                        {/* Rarity pills container - locked dimensions, positioned 20px from bottom with full gradient */}
+                        <div className="absolute bottom-0 left-0 w-[287px] h-[75px] flex items-end justify-center pb-[20px] bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                          <img
+                            className="relative flex-[0_0_auto] object-contain"
+                            alt="Rarity pills"
+                            src={song.rarityImage}
+                            style={{
+                              width: 'auto',
+                              height: '24px', // Locked height - standardized to EPIC pill height
+                              maxWidth: '80px' // Prevent pills from getting too wide
                             }}
-                          >
-                            $
-                          </span>
-                          <span 
-                            className="tracking-[0]"
-                            style={{ 
-                              fontFamily: 'Arial Black, Arial, sans-serif', // Arial Black for the number
-                              fontWeight: '900',
-                              fontSize: '19px',
-                              textShadow: '2px 2px 0px rgba(0, 0, 0, 0.9)' // Black drop shadow 90% opacity
-                            }}
-                          >
-                            {song.price}
-                          </span>
+                          />
                         </div>
                       </div>
 
-                      {/* Rarity pills container - locked dimensions, positioned 20px from bottom with full gradient */}
-                      <div className="absolute bottom-0 left-0 w-[287px] h-[75px] flex items-end justify-center pb-[20px] bg-gradient-to-t from-black/80 via-black/40 to-transparent">
-                        <img
-                          className="relative flex-[0_0_auto] object-contain"
-                          alt="Rarity pills"
-                          src={song.rarityImage}
-                          style={{
-                            width: 'auto',
-                            height: '24px', // Locked height - standardized to EPIC pill height
-                            maxWidth: '80px' // Prevent pills from getting too wide
-                          }}
-                        />
+                      <div className="flex w-[340px] items-center justify-center relative flex-[0_0_auto]">
+                        <div className="relative w-fit max-w-[320px] [font-family:'Roobert_PRO-Bold',Helvetica] font-bold text-darkprimary text-lg tracking-[0] leading-[normal] text-center whitespace-nowrap overflow-hidden text-ellipsis">
+                          {song.title}
+                        </div>
                       </div>
                     </div>
+                  ))}
+                </div>
+              </div>
 
-                    <div className="flex w-[340px] items-center justify-center relative flex-[0_0_auto]">
-                      <div className="relative w-fit max-w-[320px] [font-family:'Roobert_PRO-Bold',Helvetica] font-bold text-darkprimary text-lg tracking-[0] leading-[normal] text-center whitespace-nowrap overflow-hidden text-ellipsis">
-                        {song.title}
-                      </div>
-                    </div>
-                  </div>
+              {/* Indicator Dots - Now contrast-aware with compact spacing */}
+              <div className="flex w-[49.36px] h-[10.18px] items-center justify-between relative mb-4 flex-shrink-0">
+                {songData.map((_, index) => (
+                  <div
+                    key={index}
+                    className="relative rounded-[91.59px] transition-all duration-700 ease-in-out"
+                    style={{
+                      width: index === currentIndex ? '10.18px' : '6.11px',
+                      height: index === currentIndex ? '10.18px' : '6.11px',
+                      backgroundColor: index === currentIndex 
+                        ? contrastColor 
+                        : `${contrastColor}80` // 50% opacity for inactive dots
+                    }}
+                  />
                 ))}
               </div>
-            </div>
 
-            {/* Indicator Dots - Now contrast-aware with compact spacing */}
-            <div className="flex w-[49.36px] h-[10.18px] items-center justify-between relative mb-4 flex-shrink-0">
-              {songData.map((_, index) => (
-                <div
-                  key={index}
-                  className="relative rounded-[91.59px] transition-all duration-700 ease-in-out"
-                  style={{
-                    width: index === currentIndex ? '10.18px' : '6.11px',
-                    height: index === currentIndex ? '10.18px' : '6.11px',
-                    backgroundColor: index === currentIndex 
-                      ? contrastColor 
-                      : `${contrastColor}80` // 50% opacity for inactive dots
-                  }}
-                />
-              ))}
-            </div>
+              {/* Buy Now Button - Compact spacing */}
+              <div className="w-full max-w-[323.81px] h-10 mb-3 flex-shrink-0 px-4 sm:px-0">
+                <Button className="flex h-10 items-center justify-center gap-1 px-4 py-2 w-full bg-black rounded-[7.9px]">
+                  <div className="flex items-center justify-center gap-1">
+                    <div className="[font-family:'Roobert_PRO-Medium',Helvetica] font-medium text-white text-lg text-center tracking-[0] leading-[normal] whitespace-nowrap">
+                      Buy now
+                    </div>
 
-            {/* Buy Now Button - Compact spacing */}
-            <div className="w-[323.81px] h-10 mb-3 flex-shrink-0">
-              <Button className="flex h-10 items-center justify-center gap-1 px-4 py-2 w-full bg-black rounded-[7.9px]">
-                <div className="flex items-center justify-center gap-1">
-                  <div className="[font-family:'Roobert_PRO-Medium',Helvetica] font-medium text-white text-lg text-center tracking-[0] leading-[normal] whitespace-nowrap">
-                    Buy now
+                    <div className="flex items-center">
+                      <img
+                        className="w-[50px] h-[20px]"
+                        alt="Apple pay icon"
+                        src="/apple-pay-icon.svg"
+                      />
+                    </div>
                   </div>
+                </Button>
+              </div>
 
-                  <div className="flex items-center">
-                    <img
-                      className="w-[50px] h-[20px]"
-                      alt="Apple pay icon"
-                      src="/apple-pay-icon.svg"
-                    />
-                  </div>
-                </div>
-              </Button>
-            </div>
-
-            {/* Separator - Now contrast-aware */}
-            <Separator 
-              className="w-[323.81px] h-px mb-3 transition-colors duration-700 ease-in-out flex-shrink-0" 
-              style={{ backgroundColor: separatorColor }}
-            />
-
-            <div className="flex w-[332px] items-center gap-2.5 relative flex-[0_0_auto] flex-shrink-0">
-              <img
-                className="relative w-[58.6px] h-3"
-                alt="Seatgeek logo inline"
-                src="/seatgeek-logo-inline.svg"
+              {/* Separator - Now contrast-aware */}
+              <Separator 
+                className="w-full max-w-[323.81px] h-px mb-3 transition-colors duration-700 ease-in-out flex-shrink-0 mx-4 sm:mx-0" 
+                style={{ backgroundColor: separatorColor }}
               />
 
-              <div className="relative w-64 mt-[-1.00px] [font-family:'Spotify_Mix_UI-Regular',Helvetica] font-normal text-[#333333] text-[8px] tracking-[0] leading-[9px]">
-                By purchasing a ticket through SeatGeek or Setlister, you
-                acknowledge that the setlist may change. We strive for accuracy but
-                cannot guarantee specific songs will be performed.
+              <div className="flex w-full max-w-[332px] items-center gap-2.5 relative flex-[0_0_auto] flex-shrink-0 px-4 sm:px-0">
+                <img
+                  className="relative w-[58.6px] h-3"
+                  alt="Seatgeek logo inline"
+                  src="/seatgeek-logo-inline.svg"
+                />
+
+                <div className="relative flex-1 mt-[-1.00px] [font-family:'Spotify_Mix_UI-Regular',Helvetica] font-normal text-[#333333] text-[8px] tracking-[0] leading-[9px]">
+                  By purchasing a ticket through SeatGeek or Setlister, you
+                  acknowledge that the setlist may change. We strive for accuracy but
+                  cannot guarantee specific songs will be performed.
+                </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </div>
         </DialogContent>
       </Dialog>
 
