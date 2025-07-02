@@ -331,19 +331,11 @@ export const Vote = (): JSX.Element => {
                       {/* Dark overlay gradient */}
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
 
-                      {/* Top inner shadow - dark shadow for depth */}
+                      {/* White inner shadow at top only - consistent across all albums */}
                       <div 
-                        className="absolute top-0 left-0 right-0 h-[8px] pointer-events-none"
+                        className="absolute top-0 left-0 right-0 h-[6px] pointer-events-none"
                         style={{
-                          background: 'linear-gradient(180deg, rgba(50, 50, 50, 0.9) 0%, rgba(50, 50, 50, 0.5) 50%, transparent 100%)'
-                        }}
-                      />
-
-                      {/* Top inner highlight - white glow for craft */}
-                      <div 
-                        className="absolute top-0 left-0 right-0 h-[4px] pointer-events-none"
-                        style={{
-                          background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.3) 70%, transparent 100%)'
+                          background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 60%, transparent 100%)'
                         }}
                       />
 
