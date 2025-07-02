@@ -80,7 +80,7 @@ export const Vote = (): JSX.Element => {
     setImageErrors(prev => ({ ...prev, [songId]: true }));
   };
 
-  // Auto-nudge animation function
+  // Auto-nudge animation function - now more subtle
   const startNudgeAnimation = () => {
     if (hasUserInteracted || isDragging) return;
     
@@ -92,30 +92,30 @@ export const Vote = (): JSX.Element => {
     
     // Determine nudge direction - prefer right if possible, otherwise left
     const nudgeDirection = canNudgeRight ? -1 : 1;
-    const nudgeAmount = 25; // Pixels to nudge
+    const nudgeAmount = 12; // Reduced from 25px to 12px for subtlety
     
-    // Animate the nudge
+    // Animate the nudge with smoother timing
     setNudgeOffset(nudgeDirection * nudgeAmount);
     
-    // Return to original position after a short delay
+    // Return to original position after a longer, smoother delay
     setTimeout(() => {
       setNudgeOffset(0);
-    }, 600);
+    }, 800); // Increased from 600ms to 800ms for smoother feel
   };
 
-  // Set up auto-nudge timer
+  // Set up auto-nudge timer with longer intervals
   useEffect(() => {
     if (hasUserInteracted) return;
     
-    // Start nudging after 2 seconds, then every 4 seconds
+    // Start nudging after 3 seconds (increased from 2), then every 6 seconds (increased from 4)
     const initialDelay = setTimeout(() => {
       startNudgeAnimation();
       
-      // Set up recurring nudge
+      // Set up recurring nudge with longer interval
       nudgeTimeoutRef.current = setInterval(() => {
         startNudgeAnimation();
-      }, 4000);
-    }, 2000);
+      }, 6000); // Increased from 4000ms to 6000ms
+    }, 3000); // Increased from 2000ms to 3000ms
     
     return () => {
       clearTimeout(initialDelay);
@@ -286,7 +286,7 @@ export const Vote = (): JSX.Element => {
             <div className="relative w-[380px] h-[320px] overflow-hidden flex-shrink-0">
               <div
                 ref={containerRef}
-                className={`flex items-center ${isDragging ? '' : 'transition-transform duration-300 ease-out'} ${!hasUserInteracted && !isDragging ? 'transition-transform duration-500 ease-in-out' : ''}`}
+                className={`flex items-center ${isDragging ? '' : 'transition-transform duration-300 ease-out'} ${!hasUserInteracted && !isDragging ? 'transition-transform duration-700 ease-out' : ''}`}
                 style={{
                   transform: `translateX(${translateX + dragOffset + nudgeOffset}px)`,
                   cursor: isDragging ? 'grabbing' : 'grab'
