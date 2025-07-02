@@ -331,11 +331,11 @@ export const Vote = (): JSX.Element => {
                       {/* Dark overlay gradient */}
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
 
-                      {/* Inner shadow overlay - positioned at the top for design craft */}
+                      {/* Inner shadow overlay - positioned at the top for design craft with more pronounced white shadow */}
                       <div 
                         className="absolute inset-0 pointer-events-none"
                         style={{
-                          boxShadow: 'inset 0px 2.81px 2.85px rgba(50, 50, 50, 0.9)'
+                          boxShadow: 'inset 0px 2.81px 2.85px rgba(50, 50, 50, 0.9), inset 0px 0px 8px 2px rgba(255, 255, 255, 0.8)'
                         }}
                       />
 
