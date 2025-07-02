@@ -266,7 +266,7 @@ export const Vote = (): JSX.Element => {
       <Dialog open={true}>
         <DialogContent className="p-0 border-none bg-transparent flex items-center justify-center w-[340px] h-[540px] sm:h-[610px] max-w-[340px] max-h-[540px] sm:max-h-[610px]" hideCloseButton>
           <Card 
-            className="flex flex-col w-[340px] h-[540px] sm:h-[610px] max-w-[340px] max-h-[540px] sm:max-h-[610px] items-center gap-2 pt-0 pb-3 px-0 relative rounded-xl border border-solid border-[#00000047] shadow-[0px_1px_12.9px_6px_#0000001a] transition-colors duration-700 ease-in-out overflow-hidden"
+            className="flex flex-col w-[340px] h-[540px] sm:h-[610px] max-w-[340px] max-h-[540px] sm:max-h-[610px] items-center gap-2 pt-0 pb-6 px-0 relative rounded-xl border border-solid border-[#00000047] shadow-[0px_1px_12.9px_6px_#0000001a] transition-colors duration-700 ease-in-out overflow-hidden"
             style={{ backgroundColor: modalCardColor }}
           >
             <DialogHeader className="flex flex-col w-full h-[50px] items-start justify-center gap-2 pl-[21px] pr-[18.47px] py-2 relative border-b-[1.15px] [border-bottom-style:solid] border-[#c4c4c4] flex-shrink-0">
@@ -280,7 +280,7 @@ export const Vote = (): JSX.Element => {
             </DialogHeader>
 
             {/* Instruction text with mobile-optimized spacing */}
-            <div className="flex flex-col items-center px-6 py-2 sm:py-3 relative self-stretch w-full flex-shrink-0">
+            <div className="flex flex-col items-center px-6 py-4 relative self-stretch w-full flex-shrink-0">
               <p className="relative w-[308px] [font-family:'Roobert_PRO-Regular',Helvetica] font-normal text-[#000500] text-[16px] text-center tracking-[0] leading-[normal]">
                 Cycle through the songs and select what you want to hear at your concert.
               </p>
@@ -431,8 +431,8 @@ export const Vote = (): JSX.Element => {
               style={{ backgroundColor: separatorColor }}
             />
 
-            {/* Legal text section with equal spacing to match top instruction text */}
-            <div className="flex flex-col items-center px-6 py-2 sm:py-3 relative self-stretch w-full flex-shrink-0">
+            {/* Legal text section with ample bottom padding for balance */}
+            <div className="flex flex-col items-center px-6 py-4 pb-6 relative self-stretch w-full flex-shrink-0">
               <div className="flex w-[300px] items-center gap-2.5 relative flex-[0_0_auto]">
                 <img
                   className="relative w-[58.6px] h-3"
