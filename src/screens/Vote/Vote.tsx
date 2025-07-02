@@ -4,6 +4,7 @@ import { Button } from "../../components/ui/button";
 import { Card } from "../../components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../../components/ui/dialog";
 import { Separator } from "../../components/ui/separator";
+import { BuyNowButton } from "../../components/ui/buy-now-button";
 import { extractLightestColor, fallbackColors } from "../../utils/colorExtractor";
 
 // Song data for the carousel
@@ -78,6 +79,13 @@ export const Vote = (): JSX.Element => {
 
   const handleImageError = (songId: number) => {
     setImageErrors(prev => ({ ...prev, [songId]: true }));
+  };
+
+  // Handle buy now button click
+  const handleBuyNow = () => {
+    const currentSong = songData[currentIndex];
+    console.log(`Purchasing ${currentSong.title} for $${currentSong.price}`);
+    // Add your purchase logic here
   };
 
   // Auto-nudge animation function - now more subtle
@@ -410,24 +418,12 @@ export const Vote = (): JSX.Element => {
               ))}
             </div>
 
-            {/* Buy Now Button - Compact spacing */}
-            <div className="w-[300px] h-10 mb-2 sm:mb-3 flex-shrink-0">
-              <Button className="flex h-10 items-center justify-center gap-1 px-4 py-2 w-full bg-black rounded-[7.9px]">
-                <div className="flex items-center justify-center gap-1">
-                  <div className="[font-family:'Roobert_PRO-Medium',Helvetica] font-medium text-white text-lg text-center tracking-[0] leading-[normal] whitespace-nowrap">
-                    Buy now
-                  </div>
-
-                  <div className="flex items-center">
-                    <img
-                      className="w-[50px] h-[20px]"
-                      alt="Apple pay icon"
-                      src="/apple-pay-icon.svg"
-                    />
-                  </div>
-                </div>
-              </Button>
-            </div>
+            {/* Buy Now Button - Using the new component */}
+            <BuyNowButton 
+              width="w-[300px]"
+              className="mb-2 sm:mb-3"
+              onClick={handleBuyNow}
+            />
 
             {/* Separator - Now contrast-aware */}
             <Separator 
