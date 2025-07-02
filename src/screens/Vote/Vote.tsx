@@ -250,7 +250,7 @@ export const Vote = (): JSX.Element => {
 
   return (
     <div 
-      className="flex flex-col h-[932px] items-center justify-center gap-7 px-4 sm:px-[60px] py-[89px] relative"
+      className="flex flex-col h-[932px] items-center justify-center gap-7 px-4 sm:px-[60px] py-4 sm:py-[89px] relative"
       style={{
         background: 'linear-gradient(0deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%), #1a1a1a'
       }}
