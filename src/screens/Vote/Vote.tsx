@@ -331,6 +331,14 @@ export const Vote = (): JSX.Element => {
                       {/* Dark overlay gradient */}
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
 
+                      {/* Inner shadow overlay - positioned at the top for design craft */}
+                      <div 
+                        className="absolute inset-0 pointer-events-none"
+                        style={{
+                          boxShadow: 'inset 0px 3.81px 2.85px rgba(255, 255, 255, 0.5)'
+                        }}
+                      />
+
                       {/* Price tag - Updated with Arial Black for number and drop shadow */}
                       <div className="flex flex-col w-[50px] h-[40px] items-center justify-center gap-2 px-0.5 py-0 absolute top-px left-0 bg-[#323232] rounded-[5px_0px_17.5px_0px] bg-blend-multiply">
                         <div className="relative w-fit text-white text-center leading-[normal] flex items-baseline">
