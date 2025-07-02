@@ -331,30 +331,27 @@ export const Vote = (): JSX.Element => {
                       {/* Dark overlay gradient */}
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
 
-                      {/* Price tag - Arial font at 19px */}
+                      {/* Price tag - Updated with Arial Black for number and drop shadow */}
                       <div className="flex flex-col w-[50px] h-[40px] items-center justify-center gap-2 px-0.5 py-0 absolute top-px left-0 bg-[#323232] rounded-[5px_0px_17.5px_0px] bg-blend-multiply">
-                        <div 
-                          className="relative w-fit text-white text-[19px] text-center leading-[normal]"
-                          style={{ 
-                            fontFamily: 'Arial, sans-serif',
-                            fontWeight: '900',
-                            fontStretch: 'condensed'
-                          }}
-                        >
+                        <div className="relative w-fit text-white text-center leading-[normal] flex items-baseline">
                           <span 
                             className="tracking-[0.5px]"
                             style={{ 
-                              fontWeight: '900',
-                              fontFamily: 'Arial, sans-serif'
+                              fontFamily: 'Arial, sans-serif',
+                              fontWeight: '500', // Medium weight
+                              fontSize: '16px', // Reduced from 19px
+                              textShadow: '2px 2px 0px rgba(0, 0, 0, 0.9)' // Black drop shadow 90% opacity
                             }}
                           >
                             $
                           </span>
                           <span 
-                            className="text-[19px] tracking-[0]"
+                            className="tracking-[0]"
                             style={{ 
+                              fontFamily: 'Arial Black, Arial, sans-serif', // Arial Black for the number
                               fontWeight: '900',
-                              fontFamily: 'Arial, sans-serif'
+                              fontSize: '19px',
+                              textShadow: '2px 2px 0px rgba(0, 0, 0, 0.9)' // Black drop shadow 90% opacity
                             }}
                           >
                             {song.price}
