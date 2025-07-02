@@ -256,9 +256,9 @@ export const Vote = (): JSX.Element => {
       }}
     >
       <Dialog open={true}>
-        <DialogContent className="p-0 border-none bg-transparent flex items-center justify-center w-[340px] h-[610px] max-w-[340px] max-h-[610px]" hideCloseButton>
+        <DialogContent className="p-0 border-none bg-transparent flex items-center justify-center w-[340px] h-[580px] sm:h-[610px] max-w-[340px] max-h-[580px] sm:max-h-[610px]" hideCloseButton>
           <Card 
-            className="flex flex-col w-[340px] h-[610px] max-w-[340px] max-h-[610px] items-center gap-2 pt-0 pb-3 px-0 relative rounded-xl border border-solid border-[#00000047] shadow-[0px_1px_12.9px_6px_#0000001a] transition-colors duration-700 ease-in-out overflow-hidden"
+            className="flex flex-col w-[340px] h-[580px] sm:h-[610px] max-w-[340px] max-h-[580px] sm:max-h-[610px] items-center gap-2 pt-0 pb-3 px-0 relative rounded-xl border border-solid border-[#00000047] shadow-[0px_1px_12.9px_6px_#0000001a] transition-colors duration-700 ease-in-out overflow-hidden"
             style={{ backgroundColor: modalCardColor }}
           >
             <DialogHeader className="flex flex-col w-full h-[50px] items-start justify-center gap-2 pl-[21px] pr-[18.47px] py-2 relative border-b-[1.15px] [border-bottom-style:solid] border-[#c4c4c4] flex-shrink-0">
@@ -276,15 +276,15 @@ export const Vote = (): JSX.Element => {
               </div>
             </DialogHeader>
 
-            {/* Instruction text with compact spacing */}
-            <div className="flex flex-col items-center px-6 py-3 relative self-stretch w-full flex-shrink-0">
+            {/* Instruction text with mobile-optimized spacing */}
+            <div className="flex flex-col items-center px-6 py-2 sm:py-3 relative self-stretch w-full flex-shrink-0">
               <p className="relative w-[308px] [font-family:'Roobert_PRO-Regular',Helvetica] font-normal text-[#000500] text-[16px] text-center tracking-[0] leading-[normal]">
                 Cycle through the songs and select what you want to hear at your concert.
               </p>
             </div>
 
-            {/* Carousel Container - adjusted for 340px modal */}
-            <div className="relative w-[340px] h-[320px] overflow-hidden flex-shrink-0">
+            {/* Carousel Container - reduced height for mobile */}
+            <div className="relative w-[340px] h-[290px] sm:h-[320px] overflow-hidden flex-shrink-0">
               <div
                 ref={containerRef}
                 className={`flex items-center ${isDragging ? '' : 'transition-transform duration-300 ease-out'} ${!hasUserInteracted && !isDragging ? 'transition-transform duration-700 ease-out' : ''}`}
@@ -303,11 +303,11 @@ export const Vote = (): JSX.Element => {
                 {songData.map((song, index) => (
                   <div
                     key={song.id}
-                    className="flex flex-col w-[340px] h-[320px] items-center justify-center gap-3 pt-3 pb-2 px-0 relative flex-shrink-0"
+                    className="flex flex-col w-[340px] h-[290px] sm:h-[320px] items-center justify-center gap-2 sm:gap-3 pt-2 sm:pt-3 pb-2 px-0 relative flex-shrink-0"
                     style={{ userSelect: 'none' }}
                   >
                     <div
-                      className="relative w-[250px] h-[250px] rounded-[4.76px] overflow-hidden border-[1.19px] border-solid border-black shadow-[0px_4.76px_4.76px_#00000040,inset_0px_4.76px_3.56px_#ffffff80]"
+                      className="relative w-[230px] sm:w-[250px] h-[230px] sm:h-[250px] rounded-[4.76px] overflow-hidden border-[1.19px] border-solid border-black shadow-[0px_4.76px_4.76px_#00000040,inset_0px_4.76px_3.56px_#ffffff80]"
                     >
                       {/* Background image with fallback */}
                       {!imageErrors[song.id] ? (
@@ -374,22 +374,22 @@ export const Vote = (): JSX.Element => {
                       </div>
 
                       {/* Rarity pills container - adjusted for smaller album art */}
-                      <div className="absolute bottom-0 left-0 w-[250px] h-[65px] flex items-end justify-center pb-[15px] bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                      <div className="absolute bottom-0 left-0 w-[230px] sm:w-[250px] h-[60px] sm:h-[65px] flex items-end justify-center pb-[12px] sm:pb-[15px] bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                         <img
                           className="relative flex-[0_0_auto] object-contain"
                           alt="Rarity pills"
                           src={song.rarityImage}
                           style={{
                             width: 'auto',
-                            height: '22px', // Slightly smaller for mobile
-                            maxWidth: '70px' // Prevent pills from getting too wide
+                            height: '20px', // Smaller for mobile
+                            maxWidth: '65px' // Prevent pills from getting too wide
                           }}
                         />
                       </div>
                     </div>
 
                     <div className="flex w-[300px] items-center justify-center relative flex-[0_0_auto]">
-                      <div className="relative w-fit max-w-[280px] [font-family:'Roobert_PRO-Bold',Helvetica] font-bold text-darkprimary text-lg tracking-[0] leading-[normal] text-center whitespace-nowrap overflow-hidden text-ellipsis">
+                      <div className="relative w-fit max-w-[280px] [font-family:'Roobert_PRO-Bold',Helvetica] font-bold text-darkprimary text-base sm:text-lg tracking-[0] leading-[normal] text-center whitespace-nowrap overflow-hidden text-ellipsis">
                         {song.title}
                       </div>
                     </div>
@@ -399,7 +399,7 @@ export const Vote = (): JSX.Element => {
             </div>
 
             {/* Indicator Dots - Now contrast-aware with compact spacing */}
-            <div className="flex w-[49.36px] h-[10.18px] items-center justify-between relative mb-4 flex-shrink-0">
+            <div className="flex w-[49.36px] h-[10.18px] items-center justify-between relative mb-3 sm:mb-4 flex-shrink-0">
               {songData.map((_, index) => (
                 <div
                   key={index}
@@ -416,7 +416,7 @@ export const Vote = (): JSX.Element => {
             </div>
 
             {/* Buy Now Button - Compact spacing */}
-            <div className="w-[300px] h-10 mb-3 flex-shrink-0">
+            <div className="w-[300px] h-10 mb-2 sm:mb-3 flex-shrink-0">
               <Button className="flex h-10 items-center justify-center gap-1 px-4 py-2 w-full bg-black rounded-[7.9px]">
                 <div className="flex items-center justify-center gap-1">
                   <div className="[font-family:'Roobert_PRO-Medium',Helvetica] font-medium text-white text-lg text-center tracking-[0] leading-[normal] whitespace-nowrap">
@@ -436,7 +436,7 @@ export const Vote = (): JSX.Element => {
 
             {/* Separator - Now contrast-aware */}
             <Separator 
-              className="w-[300px] h-px mb-3 transition-colors duration-700 ease-in-out flex-shrink-0" 
+              className="w-[300px] h-px mb-2 sm:mb-3 transition-colors duration-700 ease-in-out flex-shrink-0" 
               style={{ backgroundColor: separatorColor }}
             />
 
