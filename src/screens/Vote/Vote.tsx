@@ -69,7 +69,7 @@ export const Vote = (): JSX.Element => {
   const [nudgeOffset, setNudgeOffset] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const nudgeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const cardWidth = 380; // Width of each card (matching the container width)
+  const cardWidth = 340; // Width of each card (matching the container width)
 
   // Determine contrast colors based on background
   const isLightBackground = isLightColor(modalCardColor);
@@ -258,7 +258,7 @@ export const Vote = (): JSX.Element => {
       <Dialog open={true}>
         <DialogContent className="p-0 border-none bg-transparent flex items-center justify-center" hideCloseButton>
           <Card 
-            className="flex flex-col w-[380px] max-h-[650px] items-center gap-2 pt-0 pb-3 px-0 relative flex-[0_0_auto] rounded-xl border border-solid border-[#00000047] shadow-[0px_1px_12.9px_6px_#0000001a] transition-colors duration-700 ease-in-out overflow-hidden"
+            className="flex flex-col w-[340px] max-h-[610px] items-center gap-2 pt-0 pb-3 px-0 relative flex-[0_0_auto] rounded-xl border border-solid border-[#00000047] shadow-[0px_1px_12.9px_6px_#0000001a] transition-colors duration-700 ease-in-out overflow-hidden"
             style={{ backgroundColor: modalCardColor }}
           >
             <DialogHeader className="flex flex-col w-full h-[50px] items-start justify-center gap-2 pl-[21px] pr-[18.47px] py-2 relative border-b-[1.15px] [border-bottom-style:solid] border-[#c4c4c4] flex-shrink-0">
@@ -283,7 +283,7 @@ export const Vote = (): JSX.Element => {
             </div>
 
             {/* Carousel Container with increased height for larger album art */}
-            <div className="relative w-[380px] h-[360px] overflow-hidden flex-shrink-0">
+            <div className="relative w-[340px] h-[320px] overflow-hidden flex-shrink-0">
               <div
                 ref={containerRef}
                 className={`flex items-center ${isDragging ? '' : 'transition-transform duration-300 ease-out'} ${!hasUserInteracted && !isDragging ? 'transition-transform duration-700 ease-out' : ''}`}
@@ -302,11 +302,11 @@ export const Vote = (): JSX.Element => {
                 {songData.map((song, index) => (
                   <div
                     key={song.id}
-                    className="flex flex-col w-[380px] h-[360px] items-center justify-center gap-4 pt-4 pb-2 px-0 relative flex-shrink-0"
+                    className="flex flex-col w-[340px] h-[320px] items-center justify-center gap-4 pt-4 pb-2 px-0 relative flex-shrink-0"
                     style={{ userSelect: 'none' }}
                   >
                     <div
-                      className="relative w-[287px] h-[287px] rounded-[4.76px] overflow-hidden border-[1.19px] border-solid border-black shadow-[0px_4.76px_4.76px_#00000040,inset_0px_4.76px_3.56px_#ffffff80]"
+                      className="relative w-[247px] h-[247px] rounded-[4.76px] overflow-hidden border-[1.19px] border-solid border-black shadow-[0px_4.76px_4.76px_#00000040,inset_0px_4.76px_3.56px_#ffffff80]"
                     >
                       {/* Background image with fallback */}
                       {!imageErrors[song.id] ? (
@@ -373,7 +373,7 @@ export const Vote = (): JSX.Element => {
                       </div>
 
                       {/* Rarity pills container - locked dimensions, positioned 20px from bottom with full gradient */}
-                      <div className="absolute bottom-0 left-0 w-[287px] h-[75px] flex items-end justify-center pb-[20px] bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                      <div className="absolute bottom-0 left-0 w-[247px] h-[75px] flex items-end justify-center pb-[20px] bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                         <img
                           className="relative flex-[0_0_auto] object-contain"
                           alt="Rarity pills"
@@ -387,8 +387,8 @@ export const Vote = (): JSX.Element => {
                       </div>
                     </div>
 
-                    <div className="flex w-[340px] items-center justify-center relative flex-[0_0_auto]">
-                      <div className="relative w-fit max-w-[320px] [font-family:'Roobert_PRO-Bold',Helvetica] font-bold text-darkprimary text-lg tracking-[0] leading-[normal] text-center whitespace-nowrap overflow-hidden text-ellipsis">
+                    <div className="flex w-[300px] items-center justify-center relative flex-[0_0_auto]">
+                      <div className="relative w-fit max-w-[280px] [font-family:'Roobert_PRO-Bold',Helvetica] font-bold text-darkprimary text-lg tracking-[0] leading-[normal] text-center whitespace-nowrap overflow-hidden text-ellipsis">
                         {song.title}
                       </div>
                     </div>
@@ -415,7 +415,7 @@ export const Vote = (): JSX.Element => {
             </div>
 
             {/* Buy Now Button - Compact spacing */}
-            <div className="w-[323.81px] h-10 mb-3 flex-shrink-0">
+            <div className="w-[283.81px] h-10 mb-3 flex-shrink-0">
               <Button className="flex h-10 items-center justify-center gap-1 px-4 py-2 w-full bg-black rounded-[7.9px]">
                 <div className="flex items-center justify-center gap-1">
                   <div className="[font-family:'Roobert_PRO-Medium',Helvetica] font-medium text-white text-lg text-center tracking-[0] leading-[normal] whitespace-nowrap">
@@ -435,11 +435,11 @@ export const Vote = (): JSX.Element => {
 
             {/* Separator - Now contrast-aware */}
             <Separator 
-              className="w-[323.81px] h-px mb-3 transition-colors duration-700 ease-in-out flex-shrink-0" 
+              className="w-[283.81px] h-px mb-3 transition-colors duration-700 ease-in-out flex-shrink-0" 
               style={{ backgroundColor: separatorColor }}
             />
 
-            <div className="flex w-[332px] items-center gap-2.5 relative flex-[0_0_auto] flex-shrink-0">
+            <div className="flex w-[292px] items-center gap-2.5 relative flex-[0_0_auto] flex-shrink-0">
               <img
                 className="relative w-[58.6px] h-3"
                 alt="Seatgeek logo inline"
