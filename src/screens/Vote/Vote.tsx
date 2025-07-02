@@ -69,7 +69,7 @@ export const Vote = (): JSX.Element => {
   const [nudgeOffset, setNudgeOffset] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const nudgeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const cardWidth = 380; // Width of each card (matching the container width)
+  const cardWidth = 340; // Width of each card - FIXED TO 340px as per SeatGeek design system
 
   // Determine contrast colors based on background
   const isLightBackground = isLightColor(modalCardColor);
@@ -259,7 +259,7 @@ export const Vote = (): JSX.Element => {
         <DialogContent className="p-0 border-none bg-transparent flex items-center justify-center w-full h-full max-w-none max-h-none" hideCloseButton>
           <div className="flex items-center justify-center w-full h-full p-4 sm:p-0">
             <Card 
-              className="flex flex-col w-full max-w-[380px] max-h-[610px] items-center gap-2 pt-0 pb-3 px-0 relative rounded-xl border border-solid border-[#00000047] shadow-[0px_1px_12.9px_6px_#0000001a] transition-colors duration-700 ease-in-out overflow-hidden"
+              className="flex flex-col w-[340px] max-h-[610px] items-center gap-2 pt-0 pb-3 px-0 relative rounded-xl border border-solid border-[#00000047] shadow-[0px_1px_12.9px_6px_#0000001a] transition-colors duration-700 ease-in-out overflow-hidden"
               style={{ backgroundColor: modalCardColor }}
             >
               <DialogHeader className="flex flex-col w-full h-[50px] items-start justify-center gap-2 pl-[21px] pr-[18.47px] py-2 relative border-b-[1.15px] [border-bottom-style:solid] border-[#c4c4c4] flex-shrink-0">
@@ -279,13 +279,13 @@ export const Vote = (): JSX.Element => {
 
               {/* Instruction text with compact spacing */}
               <div className="flex flex-col items-center px-6 py-3 relative self-stretch w-full flex-shrink-0">
-                <p className="relative w-full max-w-[308px] [font-family:'Roobert_PRO-Regular',Helvetica] font-normal text-[#000500] text-[16px] text-center tracking-[0] leading-[normal]">
+                <p className="relative w-[308px] [font-family:'Roobert_PRO-Regular',Helvetica] font-normal text-[#000500] text-[16px] text-center tracking-[0] leading-[normal]">
                   Cycle through the songs and select what you want to hear at your concert.
                 </p>
               </div>
 
               {/* Carousel Container with increased height for larger album art */}
-              <div className="relative w-full max-w-[380px] h-[360px] overflow-hidden flex-shrink-0">
+              <div className="relative w-[340px] h-[360px] overflow-hidden flex-shrink-0">
                 <div
                   ref={containerRef}
                   className={`flex items-center ${isDragging ? '' : 'transition-transform duration-300 ease-out'} ${!hasUserInteracted && !isDragging ? 'transition-transform duration-700 ease-out' : ''}`}
@@ -304,7 +304,7 @@ export const Vote = (): JSX.Element => {
                   {songData.map((song, index) => (
                     <div
                       key={song.id}
-                      className="flex flex-col w-[380px] h-[360px] items-center justify-center gap-4 pt-4 pb-2 px-0 relative flex-shrink-0"
+                      className="flex flex-col w-[340px] h-[360px] items-center justify-center gap-4 pt-4 pb-2 px-0 relative flex-shrink-0"
                       style={{ userSelect: 'none' }}
                     >
                       <div
@@ -417,7 +417,7 @@ export const Vote = (): JSX.Element => {
               </div>
 
               {/* Buy Now Button - Compact spacing */}
-              <div className="w-full max-w-[323.81px] h-10 mb-3 flex-shrink-0 px-4 sm:px-0">
+              <div className="w-[323.81px] h-10 mb-3 flex-shrink-0">
                 <Button className="flex h-10 items-center justify-center gap-1 px-4 py-2 w-full bg-black rounded-[7.9px]">
                   <div className="flex items-center justify-center gap-1">
                     <div className="[font-family:'Roobert_PRO-Medium',Helvetica] font-medium text-white text-lg text-center tracking-[0] leading-[normal] whitespace-nowrap">
@@ -437,18 +437,18 @@ export const Vote = (): JSX.Element => {
 
               {/* Separator - Now contrast-aware */}
               <Separator 
-                className="w-full max-w-[323.81px] h-px mb-3 transition-colors duration-700 ease-in-out flex-shrink-0 mx-4 sm:mx-0" 
+                className="w-[323.81px] h-px mb-3 transition-colors duration-700 ease-in-out flex-shrink-0" 
                 style={{ backgroundColor: separatorColor }}
               />
 
-              <div className="flex w-full max-w-[332px] items-center gap-2.5 relative flex-[0_0_auto] flex-shrink-0 px-4 sm:px-0">
+              <div className="flex w-[332px] items-center gap-2.5 relative flex-[0_0_auto] flex-shrink-0">
                 <img
                   className="relative w-[58.6px] h-3"
                   alt="Seatgeek logo inline"
                   src="/seatgeek-logo-inline.svg"
                 />
 
-                <div className="relative flex-1 mt-[-1.00px] [font-family:'Spotify_Mix_UI-Regular',Helvetica] font-normal text-[#333333] text-[8px] tracking-[0] leading-[9px]">
+                <div className="relative w-64 mt-[-1.00px] [font-family:'Spotify_Mix_UI-Regular',Helvetica] font-normal text-[#333333] text-[8px] tracking-[0] leading-[9px]">
                   By purchasing a ticket through SeatGeek or Setlister, you
                   acknowledge that the setlist may change. We strive for accuracy but
                   cannot guarantee specific songs will be performed.
