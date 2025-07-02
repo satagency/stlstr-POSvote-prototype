@@ -347,11 +347,10 @@ export const Vote = (): JSX.Element => {
                         }}
                       />
 
-                      {/* Price tag - Updated with #323232 background at 90% opacity and moved up 1px */}
+                      {/* Price tag - Updated with #323232 background at 90% opacity */}
                       <div 
-                        className="flex flex-col w-[50px] h-[40px] items-center justify-center gap-2 px-0.5 py-0 absolute left-0 rounded-[5px_0px_17.5px_0px] bg-blend-multiply"
+                        className="flex flex-col w-[50px] h-[40px] items-center justify-center gap-2 px-0.5 py-0 absolute left-0 top-0 rounded-[5px_0px_17.5px_0px] bg-blend-multiply"
                         style={{
-                          top: '0px', // Moved up 1px from top-px (which was 1px)
                           backgroundColor: 'rgba(50, 50, 50, 0.9)' // #323232 with 90% opacity
                         }}
                       >
