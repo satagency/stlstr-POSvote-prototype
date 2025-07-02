@@ -365,12 +365,13 @@ export const Vote = (): JSX.Element => {
                       {/* Rarity pills container - locked dimensions, positioned 20px from bottom with full gradient */}
                       <div className="absolute bottom-0 left-0 w-[287px] h-[75px] flex items-end justify-center pb-[20px] bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                         <img
-                          className="relative flex-[0_0_auto] w-[60px] h-[27px] object-contain"
+                          className="relative flex-[0_0_auto] object-contain"
                           alt="Rarity pills"
                           src={song.rarityImage}
                           style={{
-                            transform: 'scale(0.9)', // 10% size reduction maintained
-                            transformOrigin: 'center'
+                            width: 'auto',
+                            height: '24px', // Locked height - standardized to EPIC pill height
+                            maxWidth: '80px' // Prevent pills from getting too wide
                           }}
                         />
                       </div>
