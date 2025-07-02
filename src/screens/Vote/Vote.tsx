@@ -431,15 +431,18 @@ export const Vote = (): JSX.Element => {
               style={{ backgroundColor: separatorColor }}
             />
 
-            <div className="flex w-[300px] items-center gap-2.5 relative flex-[0_0_auto] flex-shrink-0">
-              <img
-                className="relative w-[58.6px] h-3"
-                alt="Seatgeek logo inline"
-                src="/seatgeek-logo-inline.svg"
-              />
+            {/* Legal text section with equal spacing to match top instruction text */}
+            <div className="flex flex-col items-center px-6 py-2 sm:py-3 relative self-stretch w-full flex-shrink-0">
+              <div className="flex w-[300px] items-center gap-2.5 relative flex-[0_0_auto]">
+                <img
+                  className="relative w-[58.6px] h-3"
+                  alt="Seatgeek logo inline"
+                  src="/seatgeek-logo-inline.svg"
+                />
 
-              <div className="relative w-56 mt-[-1.00px] [font-family:'Spotify_Mix_UI-Regular',Helvetica] font-normal text-[#333333] text-[8px] tracking-[0] leading-[9px]">
-                By purchasing a ticket through SeatGeek or Setlister, you acknowledge that the setlist may change. We strive for accuracy.
+                <div className="relative w-56 mt-[-1.00px] [font-family:'Spotify_Mix_UI-Regular',Helvetica] font-normal text-[#333333] text-[8px] tracking-[0] leading-[9px]">
+                  By purchasing a ticket through SeatGeek or Setlister, you acknowledge that the setlist may change. We strive for accuracy.
+                </div>
               </div>
             </div>
           </Card>
