@@ -278,7 +278,7 @@ export const Vote = (): JSX.Element => {
             {/* Instruction text with compact spacing */}
             <div className="flex flex-col items-center px-6 py-3 relative self-stretch w-full flex-shrink-0">
               <p className="relative w-[308px] [font-family:'Roobert_PRO-Regular',Helvetica] font-normal text-[#000500] text-[16px] text-center tracking-[0] leading-[normal]">
-                Cycle through the songs and select what you want to hear.
+                Cycle through the songs and select what you want to hear at your concert.
               </p>
             </div>
 
