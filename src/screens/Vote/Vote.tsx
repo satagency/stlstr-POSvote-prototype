@@ -65,7 +65,10 @@ export const Vote = (): JSX.Element => {
   const [imageErrors, setImageErrors] = useState<{[key: number]: boolean}>({});
   const [modalCardColor, setModalCardColor] = useState('#ffffff');
   const [extractedColors, setExtractedColors] = useState<{[key: number]: string}>({});
+  const [hasUserInteracted, setHasUserInteracted] = useState(false);
+  const [nudgeOffset, setNudgeOffset] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const nudgeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const cardWidth = 380; // Width of each card (matching the container width)
 
   // Determine contrast colors based on background
@@ -75,6 +78,62 @@ export const Vote = (): JSX.Element => {
 
   const handleImageError = (songId: number) => {
     setImageErrors(prev => ({ ...prev, [songId]: true }));
+  };
+
+  // Auto-nudge animation function
+  const startNudgeAnimation = () => {
+    if (hasUserInteracted || isDragging) return;
+    
+    // Only nudge if there are more items to show
+    const canNudgeLeft = currentIndex > 0;
+    const canNudgeRight = currentIndex < songData.length - 1;
+    
+    if (!canNudgeLeft && !canNudgeRight) return;
+    
+    // Determine nudge direction - prefer right if possible, otherwise left
+    const nudgeDirection = canNudgeRight ? -1 : 1;
+    const nudgeAmount = 25; // Pixels to nudge
+    
+    // Animate the nudge
+    setNudgeOffset(nudgeDirection * nudgeAmount);
+    
+    // Return to original position after a short delay
+    setTimeout(() => {
+      setNudgeOffset(0);
+    }, 600);
+  };
+
+  // Set up auto-nudge timer
+  useEffect(() => {
+    if (hasUserInteracted) return;
+    
+    // Start nudging after 2 seconds, then every 4 seconds
+    const initialDelay = setTimeout(() => {
+      startNudgeAnimation();
+      
+      // Set up recurring nudge
+      nudgeTimeoutRef.current = setInterval(() => {
+        startNudgeAnimation();
+      }, 4000);
+    }, 2000);
+    
+    return () => {
+      clearTimeout(initialDelay);
+      if (nudgeTimeoutRef.current) {
+        clearInterval(nudgeTimeoutRef.current);
+      }
+    };
+  }, [hasUserInteracted, currentIndex, isDragging]);
+
+  // Clean up nudge timer when user interacts
+  const handleUserInteraction = () => {
+    if (!hasUserInteracted) {
+      setHasUserInteracted(true);
+      setNudgeOffset(0); // Reset any active nudge
+      if (nudgeTimeoutRef.current) {
+        clearInterval(nudgeTimeoutRef.current);
+      }
+    }
   };
 
   // Extract colors from all images on component mount
@@ -117,12 +176,14 @@ export const Vote = (): JSX.Element => {
   }, [currentIndex, extractedColors]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
+    handleUserInteraction();
     setIsDragging(true);
     setStartX(e.clientX);
     setDragOffset(0);
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
+    handleUserInteraction();
     setIsDragging(true);
     setStartX(e.touches[0].clientX);
     setDragOffset(0);
@@ -225,9 +286,9 @@ export const Vote = (): JSX.Element => {
             <div className="relative w-[380px] h-[320px] overflow-hidden flex-shrink-0">
               <div
                 ref={containerRef}
-                className={`flex items-center ${isDragging ? '' : 'transition-transform duration-300 ease-out'}`}
+                className={`flex items-center ${isDragging ? '' : 'transition-transform duration-300 ease-out'} ${!hasUserInteracted && !isDragging ? 'transition-transform duration-500 ease-in-out' : ''}`}
                 style={{
-                  transform: `translateX(${translateX + dragOffset}px)`,
+                  transform: `translateX(${translateX + dragOffset + nudgeOffset}px)`,
                   cursor: isDragging ? 'grabbing' : 'grab'
                 }}
                 onMouseDown={handleMouseDown}
