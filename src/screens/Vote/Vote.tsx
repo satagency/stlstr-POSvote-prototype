@@ -256,9 +256,9 @@ export const Vote = (): JSX.Element => {
       }}
     >
       <Dialog open={true}>
-        <DialogContent className="p-0 border-none bg-transparent flex items-center justify-center w-[340px] h-[580px] sm:h-[610px] max-w-[340px] max-h-[580px] sm:max-h-[610px]" hideCloseButton>
+        <DialogContent className="p-0 border-none bg-transparent flex items-center justify-center w-[340px] h-[540px] sm:h-[610px] max-w-[340px] max-h-[540px] sm:max-h-[610px]" hideCloseButton>
           <Card 
-            className="flex flex-col w-[340px] h-[580px] sm:h-[610px] max-w-[340px] max-h-[580px] sm:max-h-[610px] items-center gap-2 pt-0 pb-3 px-0 relative rounded-xl border border-solid border-[#00000047] shadow-[0px_1px_12.9px_6px_#0000001a] transition-colors duration-700 ease-in-out overflow-hidden"
+            className="flex flex-col w-[340px] h-[540px] sm:h-[610px] max-w-[340px] max-h-[540px] sm:max-h-[610px] items-center gap-2 pt-0 pb-3 px-0 relative rounded-xl border border-solid border-[#00000047] shadow-[0px_1px_12.9px_6px_#0000001a] transition-colors duration-700 ease-in-out overflow-hidden"
             style={{ backgroundColor: modalCardColor }}
           >
             <DialogHeader className="flex flex-col w-full h-[50px] items-start justify-center gap-2 pl-[21px] pr-[18.47px] py-2 relative border-b-[1.15px] [border-bottom-style:solid] border-[#c4c4c4] flex-shrink-0">
@@ -284,7 +284,7 @@ export const Vote = (): JSX.Element => {
             </div>
 
             {/* Carousel Container - reduced height for mobile */}
-            <div className="relative w-[340px] h-[290px] sm:h-[320px] overflow-hidden flex-shrink-0">
+            <div className="relative w-[340px] h-[280px] sm:h-[320px] overflow-hidden flex-shrink-0">
               <div
                 ref={containerRef}
                 className={`flex items-center ${isDragging ? '' : 'transition-transform duration-300 ease-out'} ${!hasUserInteracted && !isDragging ? 'transition-transform duration-700 ease-out' : ''}`}
@@ -303,11 +303,11 @@ export const Vote = (): JSX.Element => {
                 {songData.map((song, index) => (
                   <div
                     key={song.id}
-                    className="flex flex-col w-[340px] h-[290px] sm:h-[320px] items-center justify-center gap-2 sm:gap-3 pt-2 sm:pt-3 pb-2 px-0 relative flex-shrink-0"
+                    className="flex flex-col w-[340px] h-[280px] sm:h-[320px] items-center justify-center gap-2 sm:gap-3 pt-2 sm:pt-3 pb-2 px-0 relative flex-shrink-0"
                     style={{ userSelect: 'none' }}
                   >
                     <div
-                      className="relative w-[230px] sm:w-[250px] h-[230px] sm:h-[250px] rounded-[4.76px] overflow-hidden border-[1.19px] border-solid border-black shadow-[0px_4.76px_4.76px_#00000040,inset_0px_4.76px_3.56px_#ffffff80]"
+                      className="relative w-[220px] sm:w-[250px] h-[220px] sm:h-[250px] rounded-[4.76px] overflow-hidden border-[1.19px] border-solid border-black shadow-[0px_4.76px_4.76px_#00000040,inset_0px_4.76px_3.56px_#ffffff80]"
                     >
                       {/* Background image with fallback */}
                       {!imageErrors[song.id] ? (
@@ -374,7 +374,7 @@ export const Vote = (): JSX.Element => {
                       </div>
 
                       {/* Rarity pills container - adjusted for smaller album art */}
-                      <div className="absolute bottom-0 left-0 w-[230px] sm:w-[250px] h-[60px] sm:h-[65px] flex items-end justify-center pb-[12px] sm:pb-[15px] bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                      <div className="absolute bottom-0 left-0 w-[220px] sm:w-[250px] h-[60px] sm:h-[65px] flex items-end justify-center pb-[12px] sm:pb-[15px] bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                         <img
                           className="relative flex-[0_0_auto] object-contain"
                           alt="Rarity pills"
