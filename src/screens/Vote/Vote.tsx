@@ -256,10 +256,24 @@ export const Vote = (): JSX.Element => {
       }}
     >
       <Dialog open={true}>
-        <DialogContent className="p-0 border-none bg-transparent flex items-center justify-center" hideCloseButton>
+        <DialogContent 
+          className="p-0 border-none bg-transparent flex items-center justify-center max-h-[610px] w-[340px] max-w-[340px]" 
+          hideCloseButton
+          style={{
+            maxHeight: '610px',
+            height: 'auto',
+            width: '340px',
+            maxWidth: '340px'
+          }}
+        >
           <Card 
             className="flex flex-col w-[340px] max-h-[610px] items-center gap-2 pt-0 pb-3 px-0 relative flex-[0_0_auto] rounded-xl border border-solid border-[#00000047] shadow-[0px_1px_12.9px_6px_#0000001a] transition-colors duration-700 ease-in-out overflow-hidden"
-            style={{ backgroundColor: modalCardColor }}
+            style={{ 
+              backgroundColor: modalCardColor,
+              maxHeight: '610px',
+              height: 'auto',
+              width: '340px'
+            }}
           >
             <DialogHeader className="flex flex-col w-full h-[50px] items-start justify-center gap-2 pl-[21px] pr-[18.47px] py-2 relative border-b-[1.15px] [border-bottom-style:solid] border-[#c4c4c4] flex-shrink-0">
               <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
