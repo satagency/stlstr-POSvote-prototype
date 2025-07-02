@@ -343,7 +343,7 @@ export const Vote = (): JSX.Element => {
                         }}
                       />
 
-                      {/* Price tag - Updated with #323232 background at 90% opacity */}
+                      {/* Price tag - Updated with Pridi font */}
                       <div 
                         className="flex flex-col w-[50px] h-[40px] items-center justify-center gap-2 px-0.5 py-0 absolute left-0 top-0 rounded-[5px_0px_17.5px_0px] bg-blend-multiply"
                         style={{
@@ -354,9 +354,9 @@ export const Vote = (): JSX.Element => {
                           <span 
                             className="tracking-[0.5px]"
                             style={{ 
-                              fontFamily: 'Arial, sans-serif',
+                              fontFamily: 'Pridi, serif',
                               fontWeight: '500', // Medium weight
-                              fontSize: '16px', // Reduced from 19px
+                              fontSize: '16px',
                               textShadow: '2px 2px 0px rgba(0, 0, 0, 0.9)' // Black drop shadow 90% opacity
                             }}
                           >
@@ -365,8 +365,8 @@ export const Vote = (): JSX.Element => {
                           <span 
                             className="tracking-[0]"
                             style={{ 
-                              fontFamily: 'Arial Black, Arial, sans-serif', // Arial Black for the number
-                              fontWeight: '900',
+                              fontFamily: 'Pridi, serif',
+                              fontWeight: '700', // Bold weight for the number
                               fontSize: '19px',
                               textShadow: '2px 2px 0px rgba(0, 0, 0, 0.9)' // Black drop shadow 90% opacity
                             }}
