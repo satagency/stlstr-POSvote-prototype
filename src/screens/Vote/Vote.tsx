@@ -335,12 +335,18 @@ export const Vote = (): JSX.Element => {
                       <div 
                         className="absolute inset-0 pointer-events-none"
                         style={{
-                          boxShadow: 'inset 0px 3.81px 2.85px rgba(255, 255, 255, 0.5)'
+                          boxShadow: 'inset 0px 2.81px 2.85px rgba(50, 50, 50, 0.9)'
                         }}
                       />
 
-                      {/* Price tag - Updated with Arial Black for number and drop shadow */}
-                      <div className="flex flex-col w-[50px] h-[40px] items-center justify-center gap-2 px-0.5 py-0 absolute top-px left-0 bg-[#323232] rounded-[5px_0px_17.5px_0px] bg-blend-multiply">
+                      {/* Price tag - Updated with #323232 background at 90% opacity and moved up 1px */}
+                      <div 
+                        className="flex flex-col w-[50px] h-[40px] items-center justify-center gap-2 px-0.5 py-0 absolute left-0 rounded-[5px_0px_17.5px_0px] bg-blend-multiply"
+                        style={{
+                          top: '0px', // Moved up 1px from top-px (which was 1px)
+                          backgroundColor: 'rgba(50, 50, 50, 0.9)' // #323232 with 90% opacity
+                        }}
+                      >
                         <div className="relative w-fit text-white text-center leading-[normal] flex items-baseline">
                           <span 
                             className="tracking-[0.5px]"
