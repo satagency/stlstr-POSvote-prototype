@@ -343,11 +343,11 @@ export const Vote = (): JSX.Element => {
                         }}
                       />
 
-                      {/* Price tag - Updated with Pridi font */}
+                      {/* Price tag - Updated with #212121 background and increased price number size */}
                       <div 
                         className="flex flex-col w-[50px] h-[40px] items-center justify-center gap-2 px-0.5 py-0 absolute left-0 top-0 rounded-[5px_0px_17.5px_0px] bg-blend-multiply"
                         style={{
-                          backgroundColor: 'rgba(50, 50, 50, 0.9)' // #323232 with 90% opacity
+                          backgroundColor: 'rgba(33, 33, 33, 0.9)' // #212121 with 90% opacity
                         }}
                       >
                         <div className="relative w-fit text-white text-center leading-[normal] flex items-baseline">
@@ -367,7 +367,7 @@ export const Vote = (): JSX.Element => {
                             style={{ 
                               fontFamily: 'Pridi, serif',
                               fontWeight: '700', // Bold weight for the number
-                              fontSize: '19px',
+                              fontSize: '22px', // Increased from 19px to 22px (+3px)
                               textShadow: '2px 2px 0px rgba(0, 0, 0, 0.9)' // Black drop shadow 90% opacity
                             }}
                           >
