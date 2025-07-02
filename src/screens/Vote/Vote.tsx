@@ -261,10 +261,10 @@ export const Vote = (): JSX.Element => {
             className="flex flex-col w-[380px] max-h-[650px] items-center gap-2 pt-0 pb-3 px-0 relative flex-[0_0_auto] rounded-xl border border-solid border-[#00000047] shadow-[0px_1px_12.9px_6px_#0000001a] transition-colors duration-700 ease-in-out overflow-hidden"
             style={{ backgroundColor: modalCardColor }}
           >
-            <DialogHeader className="flex flex-col w-full h-[50px] items-start justify-center gap-2 pl-[29px] pr-[18.47px] py-2 relative border-b-[1.15px] [border-bottom-style:solid] border-[#c4c4c4] flex-shrink-0">
+            <DialogHeader className="flex flex-col w-full h-[50px] items-start justify-center gap-2 pl-[21px] pr-[18.47px] py-2 relative border-b-[1.15px] [border-bottom-style:solid] border-[#c4c4c4] flex-shrink-0">
               <div className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
                 <DialogTitle asChild>
-                  <h3 className="relative w-fit [font-family:'Roobert_PRO-Bold',Helvetica] font-bold text-black text-base tracking-[0] leading-[20px] whitespace-nowrap">
+                  <h3 className="relative w-fit [font-family:'Roobert_PRO-Bold',Helvetica] font-bold text-black text-sm tracking-[0] leading-[20px] whitespace-nowrap">
                     Change the Setlist
                   </h3>
                 </DialogTitle>
