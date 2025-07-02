@@ -268,11 +268,6 @@ export const Vote = (): JSX.Element => {
                     Change the Setlist
                   </h3>
                 </DialogTitle>
-
-                {/* Hide X icon on mobile (screens smaller than 640px) */}
-                <div className="hidden sm:inline-flex items-center gap-2 p-[3.46px] relative flex-[0_0_auto] bg-[#0000001a] rounded-[103.91px]">
-                  <XIcon className="relative w-[18.47px] h-[18.47px]" />
-                </div>
               </div>
             </DialogHeader>
 
@@ -448,9 +443,7 @@ export const Vote = (): JSX.Element => {
               />
 
               <div className="relative w-56 mt-[-1.00px] [font-family:'Spotify_Mix_UI-Regular',Helvetica] font-normal text-[#333333] text-[8px] tracking-[0] leading-[9px]">
-                By purchasing a ticket through SeatGeek or Setlister, you
-                acknowledge that the setlist may change. We strive for accuracy but
-                cannot guarantee specific songs will be performed.
+                By purchasing a ticket through SeatGeek or Setlister, you acknowledge that the setlist may change. We strive for accuracy.
               </div>
             </div>
           </Card>
